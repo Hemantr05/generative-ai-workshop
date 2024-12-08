@@ -32,6 +32,12 @@ This repository uses open source packages to create chatbots for general questio
     $ poetry install
     ```
 
+    2.3. Install watchdog (for streamlit)
+
+    ```
+    $ pip install watchdog
+    ```
+
 # Usage
 
 Run streamlit application:
