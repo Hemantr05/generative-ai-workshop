@@ -9,6 +9,7 @@ class OllamaModel():
                 top_p: float=0.9,
                 max_tokens: int=512,
                 repeat_penalty: float=0.0,
+                stream: bool=False
             ):
         
         self.model_name = model_name
@@ -28,6 +29,8 @@ class OllamaModel():
         # Sets how strongly to penalize repetitions. A higher value (e.g., 1.5) will penalize repetitions more strongly, while a lower value (e.g., 0.9) will be more lenient. (Default: 1.1)
         self.repeat_penalty = repeat_penalty
 
+        self.stream = stream
+
         self.system_prompt = open(prompt_file_path, 'r').read()
 
         self.llm = None
@@ -42,15 +45,15 @@ class OllamaModel():
             num_predict=self.max_tokens)
 
     def __call__(self, query: str):
-        model.init_model()
+        self.init_model()
         messages = [
-            ("system", model.system_prompt), 
+            ("system", self.system_prompt), 
             ("human", query)
         ]
 
-        stream = model.llm.invoke(messages)
-        return stream
-
+        if self.stream:
+            return self.llm.stream(messages)        
+        return self.llm.invoke(messages)
 
 
 if __name__ == "__main__":
