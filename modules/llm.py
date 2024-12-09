@@ -3,7 +3,7 @@ from langchain_community.llms import Ollama
 class OllamaModel():
     def __init__(self,
                 model_name: str='phi',
-                prompt_file_path: str="prompts/general_prompt.txt",
+                prompt_file_path: str="../prompts/general_prompt.txt",
                 temperature: float=0.7,
                 top_k: int=1,
                 top_p: float=0.9,
@@ -44,7 +44,8 @@ class OllamaModel():
             top_p=self.top_p, 
             num_predict=self.max_tokens)
 
-    def __call__(self, query: str):
+
+    def answer(self, query: str):
         self.init_model()
         messages = [
             ("system", self.system_prompt), 
@@ -60,8 +61,21 @@ if __name__ == "__main__":
 
     # query = "Write hello world code in python"
     query = "Write python program for quick sort algorithm"
-    model = OllamaModel()
+    model = OllamaModel(prompt_file_path="../prompts/document_qa_prompt.txt")
     print(model(query=query))
 
+    # from vectordb import QueryVectorDB
+
+    # temp_filepath = "../data/Harry Potter and the Sorcerers Stone.pdf"
+    # init = QueryVectorDB(temp_filepath)
+
+    # init.create_vectordb()
+
+    # question = "Who is Harry Potter?"
+
+    # response = init.query(q=question)
+    # response_text = "\n\n".join([i['page_content'] for i in response.values()])
+    # model.system_prompt.format(question=question, context=response_text)
+    # print(model.answer(question+'\n\n'+response_text))
     
 

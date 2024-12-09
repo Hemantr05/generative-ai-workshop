@@ -27,7 +27,7 @@ if prompt := st.chat_input("How may I help you today?"):
         full_response = ""
 
         # Stream response
-        for chunk in model(query=prompt):
+        for chunk in model.answer(query=prompt):
             full_response += chunk
             response_placeholder.markdown(full_response)
 

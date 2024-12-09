@@ -15,6 +15,7 @@ pypdf = "^5.1.0"
 langchain-community = "^0.2.0"
 langchain-core = "^0.2.0"
 watchdog = "4.0.0"
+sentence-transformers = "^3.3.1"
 
 [build-system]
 requires = ["poetry-core"]
