@@ -3,7 +3,7 @@ from langchain_community.llms import Ollama
 class OllamaModel():
     def __init__(self,
                 model_name: str='phi',
-                prompt_file_path: str="../prompts/general_prompt.txt",
+                prompt_file_path: str="prompts/general_prompt.txt",
                 temperature: float=0.7,
                 top_k: int=1,
                 top_p: float=0.9,
@@ -61,7 +61,7 @@ if __name__ == "__main__":
 
     # query = "Write hello world code in python"
     query = "Write python program for quick sort algorithm"
-    model = OllamaModel(prompt_file_path="../prompts/document_qa_prompt.txt")
+    model = OllamaModel(prompt_file_path="prompts/document_qa_prompt.txt")
     print(model(query=query))
 
     # from vectordb import QueryVectorDB
