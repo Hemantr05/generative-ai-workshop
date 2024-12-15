@@ -11,14 +11,30 @@ This repository uses open source packages to create chatbots for general questio
     ```
     $ python3 -m venv venv
     ```
+    Or,
+    ```
+    $ python -m venv venv
+    ```
+    Or,
+    ```
+    $ py -m venv venv
+    ```
 
     1.2. Activate environment
     ```
-    $ source venv/bin/activate
+    $ source venv/bin/activate # For Linux or MacOS
     ```
+    Or,
+    ```
+    # In command prompt (terminal/new terminal - change terminal to cmd instead of powershell)
+    
+    $ path\to\virtual\environmet\venv\Scripts\activate # For Windows
+    ```
+    
+    
 
 
-2. Python package installation
+1. Python package installation
 
     2.1. Install poetry package manager
 
@@ -38,7 +54,7 @@ This repository uses open source packages to create chatbots for general questio
     $ pip install watchdog
     ```
 
-3. Install Ollama and download models
+2. Install Ollama and download models
 
     3.1. Install Ollama:<br>
 
@@ -66,3 +82,7 @@ Run streamlit application:
 ```
 $ streamlit run general_chat.py
 ```
+
+
+
+**Note: If you're a windows user the installation may vary for different Windows version. In case there's an issue in installation, contact the owner of the repository.**
